@@ -60,7 +60,54 @@
 		document.getElementById("output").innerHTML = dataURL;
 		document.getElementById("hash").innerHTML = "Hash: " + dataURL.hashCode();
 		document.body.appendChild(canvas);
-
 	</script>
+<br>
+    <b>RAND PICT:</b>
+<br>
+<canvas id='myCanvasRand' width='300' height='300' style='border:1px solid #000000;'></canvas>
+<script>
+    function getRandomInt(min, max) {
+  min = Math.ceil(0);
+  max = Math.floor(255);
+  return Math.floor(Math.random() * (max - min)) + min; //Максимум не включается, минимум включается
+}
+var canvas = document.getElementById("myCanvasRand");
+var ctx = canvas.getContext("2d");
+ctx.fillStyle = "rgb("+getRandomInt(0, 255) +','+getRandomInt(0, 255)+','+getRandomInt(0, 255)+"";
+ctx.beginPath();
+ctx.rect(getRandomInt(0, 200), getRandomInt(0, 200), getRandomInt(0, 200), getRandomInt(0, 200));
+ctx.fill();
+ctx.stroke();
+ctx.closePath();
+ctx.beginPath();
+ctx.fillStyle = "rgb("+getRandomInt(0, 255) +','+getRandomInt(0, 255)+','+getRandomInt(0, 255)+"";
+ctx.arc(getRandomInt(0, 200), getRandomInt(0, 200), getRandomInt(0, 200), getRandomInt(0, 200), Math.PI * 2, true);
+ctx.fill();
+ctx.stroke();   
+ctx.closePath();
+var txt = dataURL.hashCode();
+ctx.textBaseline = "top";
+ctx.font = '17px "Arial 17"';
+ctx.textBaseline = "alphabetic";
+ctx.fillStyle = "rgb("+getRandomInt(0, 255) +','+getRandomInt(0, 255)+','+getRandomInt(0, 255)+"";;
+ctx.rotate(.03);
+ctx.fillText(txt, 4, 17);
+ctx.fillStyle = "rgb("+getRandomInt(0, 255) +','+getRandomInt(0, 255)+','+getRandomInt(0, 255)+"";
+ctx.shadowBlur=getRandomInt(0, 20);
+ctx.shadowColor="rgb("+getRandomInt(0, 255) +','+getRandomInt(0, 255)+','+getRandomInt(0, 255)+"";;
+ctx.fillRect(getRandomInt(0, 200),getRandomInt(0, 200),getRandomInt(0, 200),getRandomInt(0, 200));
+var hash_int = function(txt) {
+    var numbers = int(txt)
+    return numbers
+}
+// hashing function
+src = canvas.toDataURL();
+hash = 0;
+for (i = 0; i < src.length; i++) {
+    char = src.charCodeAt(i);
+    hash = ((hash<<5)-hash)+char;
+    hash = hash & hash;
+}
+</script>
 </body>
 </html>
