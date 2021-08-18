@@ -1,0 +1,36 @@
+<html>
+<head>
+    <title>Canvas Fingerprinting Demo</title>
+    <script src="fingerprinting/fingerprint.js"></script>
+    <script src="hash/murmurhash3.js"></script>
+    <script src="hash/java_hashcode.js"></script>
+</head>
+<body>
+
+<div style="text-align: center;">
+    <h3 style="margin-top: 60px">Fingerprint with drawing canvas</h3>
+    <h1 id="withCanvasDrawing"></h1>
+</div>
+<div style="text-align: center;">
+    <h3 style="margin-top: 20px">Fingerprint without drawing canvas and murmur3 hash function, metadata only:</h3>
+    <h1 id="withoutCanvasDrawing"></h1>
+</div>
+
+<div style="text-align: center;">
+    <h3 style="margin-top: 20px">Fingerprint without drawing canvas and Java's hashcode hash function, metadata
+        only:
+    </h3>
+    <h1 id="fingerPrintWithJavaHashCode"></h1>
+</div>
+
+<script>
+    var withCanvasDrawing = new Fingerprint({canvas: true});
+    var withoutCanvasDrawing = new Fingerprint({canvas: false});
+    var javaHashFunction = new Fingerprint({hasher: javaHashCode});
+
+    document.getElementById('withCanvasDrawing').innerHTML = withCanvasDrawing.get();
+    document.getElementById('withoutCanvasDrawing').innerHTML = withoutCanvasDrawing.get();
+    document.getElementById('fingerPrintWithJavaHashCode').innerHTML = javaHashFunction.get();
+</script>
+</body>
+</html>
